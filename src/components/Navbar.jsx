@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import ThemeToggle from './ThemeToggle';
 
 const Navbar = () => {
     return (
@@ -33,7 +34,10 @@ const Navbar = () => {
         <Link to="/" className=" text-3xl font-bold font-mono">Tourism</Link>
       </div>
       <div className="navbar-end">
+      
+
       <ul className="flex gap-4 mr-2">
+        <li><ThemeToggle /></li>
            
             <li><NavLink to="/login"> Log In</NavLink></li>
             <li><NavLink to="/register"> Register</NavLink></li>

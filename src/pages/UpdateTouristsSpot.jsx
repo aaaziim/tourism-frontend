@@ -1,8 +1,9 @@
 import React from 'react';
 
-const AddTouristSpot = () => {
+const UpdateTouristsSpot = () => {
 
-    const handleAdSpot = (e) => {
+
+    const handleSpotUpdate = (e) =>{
         e.preventDefault();
         const form = e.target;
     
@@ -31,10 +32,20 @@ const AddTouristSpot = () => {
             user_email,
             user_name
         );
-    };
+    }
+
+
+
+
+
+
+
+
+
 
     return (
         <div>
+           <div>
          <div class="w-full max-w-md mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 lg:max-w-4xl">
     
 
@@ -44,10 +55,10 @@ const AddTouristSpot = () => {
         </div>
 
         <p class="mt-3 text-xl text-center text-gray-600 dark:text-gray-200">
-            Add a Tourist Spot
+            Update a Tourist Spot
         </p>
 
-        <form  onSubmit={handleAdSpot}>
+        <form onSubmit={handleSpotUpdate}>
      
             <div class="mt-4">
                 <label class="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200" for="imageURL">Image URL</label>
@@ -116,15 +127,16 @@ const AddTouristSpot = () => {
          
             <div class="mt-6">
                 <button type="submit" class="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-800 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50">
-                    Add Tourist Spot
+                    Update Tourist Spot
                 </button>
             </div>
         </form>
     </div>
 </div>
    
+        </div>  
         </div>
     );
 };
 
-export default AddTouristSpot;
+export default UpdateTouristsSpot;

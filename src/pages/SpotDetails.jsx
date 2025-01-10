@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const SpotDetails = () => {
     return (
@@ -51,9 +52,10 @@ const SpotDetails = () => {
             </div>
 
             <div class="mt-8">
-                <button class="px-6 py-3 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
+                <Link to="/updatespot">  <button class="px-6 py-3 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
                     Edit Details
-                </button>
+                </button></Link>
+              
                 <button class="ml-4 px-6 py-3 text-sm font-medium text-white bg-red-600 rounded-lg hover:bg-red-500 focus:outline-none focus:ring focus:ring-red-300 focus:ring-opacity-50">
                     Delete Spot
                 </button>

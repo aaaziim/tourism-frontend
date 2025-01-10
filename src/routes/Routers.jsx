@@ -10,6 +10,7 @@ import MyList from '../pages/MyList';
 import AuthProvider from '../provider/AuthProvider';
 import SpotDetails from '../pages/SpotDetails';
 import NotFound from '../pages/NotFound';
+import UpdateTouristsSpot from '../pages/UpdateTouristsSpot';
 
 const Routers = () => {
     const routes = createBrowserRouter([
@@ -32,6 +33,10 @@ const Routers = () => {
                 {
                     path: "/spot",
                     element:<SpotDetails></SpotDetails>
+                },
+                {
+                    path: "/updatespot",
+                    element:<UpdateTouristsSpot></UpdateTouristsSpot>
                 },
                 {
                     path: "/mylist",
