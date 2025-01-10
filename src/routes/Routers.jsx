@@ -9,6 +9,7 @@ import Register from '../pages/Register';
 import MyList from '../pages/MyList';
 import AuthProvider from '../provider/AuthProvider';
 import SpotDetails from '../pages/SpotDetails';
+import NotFound from '../pages/NotFound';
 
 const Routers = () => {
     const routes = createBrowserRouter([
@@ -44,6 +45,10 @@ const Routers = () => {
                     path: "/register",
                     element:<Register></Register>
                 },
+                {
+                    path: "*", 
+                    element: <NotFound></NotFound>
+                }
             ]
         }
     ])
