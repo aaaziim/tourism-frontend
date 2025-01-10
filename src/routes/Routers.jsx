@@ -8,6 +8,7 @@ import Login from '../pages/Login';
 import Register from '../pages/Register';
 import MyList from '../pages/MyList';
 import AuthProvider from '../provider/AuthProvider';
+import SpotDetails from '../pages/SpotDetails';
 
 const Routers = () => {
     const routes = createBrowserRouter([
@@ -26,6 +27,10 @@ const Routers = () => {
                 {
                     path: "/allspot",
                     element:<AllTouristsSpot></AllTouristsSpot>
+                },
+                {
+                    path: "/spot",
+                    element:<SpotDetails></SpotDetails>
                 },
                 {
                     path: "/mylist",
