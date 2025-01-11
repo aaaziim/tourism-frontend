@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import SpotCrad from '../components/SpotCrad';
 import { useLoaderData } from 'react-router-dom';
+import { AuthContext } from '../provider/AuthProvider';
 
 const MyList = () => {
+    const {user} = useContext(AuthContext)
+    
     const spots = useLoaderData() 
 
+    const mySpots = spots.filter(spot=> spot.user_email == user.email)
+
+    console.log(mySpots)
     return (
         <div>
               <div class="text-center my-10">
@@ -17,7 +23,7 @@ const MyList = () => {
             </div>
             <div class="grid grid-cols-1 gap-8 mt-8 lg:grid-cols-3 px-4">
             {
-                    spots.map(spot => <SpotCrad key={spot._id} spot={spot}></SpotCrad>)
+                    mySpots.map(spot => <SpotCrad key={spot._id} spot={spot}></SpotCrad>)
                 }
             </div>
         </div>
