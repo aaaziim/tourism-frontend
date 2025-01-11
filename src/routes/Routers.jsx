@@ -20,7 +20,8 @@ const Routers = () => {
             children:[
                 {
                     path: "/",
-                    element:<Home></Home>
+                    element:<Home></Home>,
+                    loader: ()=> fetch("http://localhost:5000/allspot")
                 },
                 {
                     path: "/addspot",
@@ -28,19 +29,23 @@ const Routers = () => {
                 },
                 {
                     path: "/allspot",
-                    element:<AllTouristsSpot></AllTouristsSpot>
+                    element:<AllTouristsSpot></AllTouristsSpot>,
+                    loader: ()=> fetch("http://localhost:5000/allspot")
                 },
                 {
-                    path: "/spot",
-                    element:<SpotDetails></SpotDetails>
+                    path: "/spot/:id",
+                    element: <SpotDetails></SpotDetails>,
+                    loader: ({ params }) => fetch(`http://localhost:5000/spot/${params.id}`)
                 },
                 {
-                    path: "/updatespot",
-                    element:<UpdateTouristsSpot></UpdateTouristsSpot>
+                    path: "/updatespot/:id",
+                    element:<UpdateTouristsSpot></UpdateTouristsSpot>,
+                    loader: ({ params }) => fetch(`http://localhost:5000/spot/${params.id}`)
                 },
                 {
                     path: "/mylist",
-                    element:<MyList></MyList>
+                    element:<MyList></MyList>,
+                    loader: ()=> fetch("http://localhost:5000/myspot")
                 },
                 {
                     path: "/login",

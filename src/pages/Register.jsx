@@ -33,9 +33,7 @@ const Register = () => {
               .then((data) => {
                 if (data.acknowledged) {
                   toast.success("Registration Successful");
-                } else {
-                  toast.error("Registration Failed");
-                }
+                }  
               });
           })
           .catch((error) => {

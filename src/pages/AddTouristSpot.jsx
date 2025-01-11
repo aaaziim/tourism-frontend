@@ -1,5 +1,6 @@
 import React from 'react';
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const AddTouristSpot = () => {
 
     const handleAdSpot = (e) => {
@@ -18,27 +19,43 @@ const AddTouristSpot = () => {
         const user_email = form.user_email.value;
         const user_name = form.user_name.value;
     
-        console.log(
-            imageURL,
-            tourists_spot_name,
-            country_name,
-            location,
-            short_description,
-            average_cost,
-            seasonality,
-            travel_time,
-            totaVisitorsPerYear,
-            user_email,
-            user_name
-        );
+      
+        fetch("http://localhost:5000/addspot", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify({ imageURL,
+                tourists_spot_name,
+                country_name,
+                location,
+                short_description,
+                average_cost,
+                seasonality,
+                travel_time,
+                totaVisitorsPerYear,
+                user_email,
+                user_name }),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+                
+                    if (data.acknowledged) {
+                        form.reset()
+                            toast.success("Spot Added Successfully");
+                          }  
+             });
     };
 
     return (
-        <div>
-         <div class="w-full max-w-md mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 lg:max-w-4xl">
+        <div class="w-full max-w-md mx-auto overflow-hidden
+        bg-white rounded-lg shadow-lg dark:bg-gray-800 
+        lg:max-w-4xl">
+         <div  class=" "
+         >
     
 
-    <div class="w-full px-6 py-8 md:px-8 lg:w-1/2">
+    <div class="w-full px-6 py-8 md:px-8 ">
         <div class="flex justify-center mx-auto">
             <img class="w-auto h-7 sm:h-8" src="https://merakiui.com/images/logo.svg" alt=""/>
         </div>
@@ -46,7 +63,7 @@ const AddTouristSpot = () => {
         <p class="mt-3 text-xl text-center text-gray-600 dark:text-gray-200">
             Add a Tourist Spot
         </p>
-
+<ToastContainer/>
         <form  onSubmit={handleAdSpot}>
      
             <div class="mt-4">

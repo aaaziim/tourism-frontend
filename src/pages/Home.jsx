@@ -1,8 +1,10 @@
 import React from 'react';
 import Banner from '../components/Banner';
 import SpotCrad from '../components/SpotCrad';
+import { useLoaderData } from 'react-router-dom';
 
 const Home = () => {
+    const spots = useLoaderData() 
     return (
         <div>
            <Banner></Banner>
@@ -15,7 +17,9 @@ const Home = () => {
             </p>
             </div>
             <div class="grid grid-cols-1 gap-8 mt-8 lg:grid-cols-3 px-4">
-            <SpotCrad></SpotCrad>
+            {
+                    spots.map(spot => <SpotCrad key={spot._id} spot={spot}></SpotCrad>)
+                }
             </div>
             <div class="text-center my-10">
             <h1 class="text-2xl font-bold text-gray-800 capitalize lg:text-3xl dark:text-white "> Countries to Explore</h1>
@@ -26,7 +30,9 @@ const Home = () => {
             </p>
             </div>
             <div class="grid grid-cols-1 gap-8 mt-8 lg:grid-cols-3 px-4">
-            <SpotCrad></SpotCrad>
+            {
+                    spots.map(spot => <SpotCrad key={spot._id} spot={spot}></SpotCrad>)
+                }
             </div>
         </div>
     );

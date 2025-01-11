@@ -1,7 +1,10 @@
 import React from 'react';
 import SpotCrad from '../components/SpotCrad';
+import { useLoaderData } from 'react-router-dom';
 
 const MyList = () => {
+    const spots = useLoaderData() 
+
     return (
         <div>
               <div class="text-center my-10">
@@ -13,7 +16,9 @@ const MyList = () => {
             </p>
             </div>
             <div class="grid grid-cols-1 gap-8 mt-8 lg:grid-cols-3 px-4">
-            <SpotCrad></SpotCrad>
+            {
+                    spots.map(spot => <SpotCrad key={spot._id} spot={spot}></SpotCrad>)
+                }
             </div>
         </div>
     );
