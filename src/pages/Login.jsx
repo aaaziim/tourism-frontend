@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-
+import { AuthContext } from "../provider/AuthProvider";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const Login = () => {
+
+
+    const {user, loginUser} = useContext(AuthContext)
 
 
     const handleSignIn = (e)=>{
@@ -10,6 +15,15 @@ const Login = () => {
         const email = form.email.value;
         const password = form.password.value;
         console.log(email, password)
+
+        loginUser(email, password)
+         .then(res => { if(res.user.providerId){
+                 toast.success("Login Successful");
+         } })
+         .catch((error) => {
+             toast.error("Login Failed: " + error.message);
+         });
+         form.reset();
 
     }
 
@@ -64,7 +78,7 @@ const Login = () => {
     
                 <span className="w-1/5 border-b dark:border-gray-400 lg:w-1/4"></span>
             </div>
-    
+    <ToastContainer />
          <form onSubmit={handleSignIn}>
          <div className="mt-4">
                 <label className="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200" for="LoggingEmailAddress">Email Address</label>
