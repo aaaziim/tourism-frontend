@@ -31,7 +31,7 @@ const AuthProvider = ({ children }) => {
   // Function to log out the user
   const logoutUser = () => {
     setLoading(true); // Set loading state during the async operation
-    return signOut(auth).finally(() => setLoading(false)); // Reset loading state after sign-out
+    return signOut(auth);
   };
 
   // Set up a listener to handle authentication state changes

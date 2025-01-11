@@ -2,10 +2,23 @@ import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import ThemeToggle from './ThemeToggle';
 import { AuthContext } from '../provider/AuthProvider';
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const Navbar = () => {
 
-      const {user} = useContext(AuthContext)
+      const {user, logoutUser} = useContext(AuthContext)
+
+
+      const handleLogout = () =>{
+
+        logoutUser()
+        .then(() => {
+          toast.success("Sign-out successful."); 
+        }).catch((error) => {
+           toast.error("An error happened: " + error.message);
+        });
+      }
+      
   
     return (
       <div className="navbar bg-base-100">
@@ -48,6 +61,8 @@ const Navbar = () => {
            
            
           </ul>
+        <ToastContainer />
+
       {user && <div className="dropdown dropdown-end">
       <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
         <div className="w-10 rounded-full">
@@ -66,7 +81,7 @@ const Navbar = () => {
           </a>
         </li>
         <li><Link to="/mylist">MyList</Link></li>
-        <li><a>Logout</a></li>
+        <li><p onClick={handleLogout}>Logout</p></li>
       </ul>
     </div>}
       </div>
