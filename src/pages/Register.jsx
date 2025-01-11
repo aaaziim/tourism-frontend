@@ -1,20 +1,49 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from "react";
+import { AuthContext } from "../provider/AuthProvider";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { Link } from "react-router-dom";
+
 
 const Register = () => {
 
+    const {user, createUser} = useContext(AuthContext)
+    
 
 
-    const handleSignUp = (e)=>{
+    const handleSignUp = (e) => {
         e.preventDefault();
         const form = e.target;
         const name = form.name.value;
         const photoURL = form.photoURL.value;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(name, photoURL, email, password)
-
-    }
+    
+        createUser(email, password)
+          .then(() => {
+            // Save user to database
+            fetch("http://localhost:5000/addusers", {
+              method: "POST",
+              headers: {
+                "content-type": "application/json",
+              },
+              body: JSON.stringify({ name, photoURL, email, password }),
+            })
+              .then((res) => res.json())
+              .then((data) => {
+                if (data.acknowledged) {
+                  toast.success("Registration Successful");
+                } else {
+                  toast.error("Registration Failed");
+                }
+              });
+          })
+          .catch((error) => {
+            toast.error("Registration Failed: " + error.message);
+          });
+    
+        form.reset();
+      };
 
 
 
@@ -35,6 +64,7 @@ const Register = () => {
 
     
         <div className="container flex items-center justify-center  px-6 mx-auto">
+        <ToastContainer />
             <form onSubmit={handleSignUp} className="w-full max-w-md">
                 <div className="flex justify-center mx-auto">
                     <img className="w-auto h-7 sm:h-8" src="https://merakiui.com/images/logo.svg" alt=""/>

@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import ThemeToggle from './ThemeToggle';
+import { AuthContext } from '../provider/AuthProvider';
 
 const Navbar = () => {
+
+      const {user} = useContext(AuthContext)
+  
     return (
       <div className="navbar bg-base-100">
       <div className="navbar-start">
@@ -38,12 +42,13 @@ const Navbar = () => {
 
       <ul className="flex gap-4 mr-2">
         <li><ThemeToggle /></li>
-           
-            <li><NavLink to="/login"> Log In</NavLink></li>
+        { !user &&  <> <li><NavLink to="/login"> Log In</NavLink></li>
             <li><NavLink to="/register"> Register</NavLink></li>
-             
+             </> }
+           
+           
           </ul>
-      <div className="dropdown dropdown-end">
+      {user && <div className="dropdown dropdown-end">
       <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
         <div className="w-10 rounded-full">
           <img
@@ -63,7 +68,7 @@ const Navbar = () => {
         <li><Link to="/mylist">MyList</Link></li>
         <li><a>Logout</a></li>
       </ul>
-    </div>
+    </div>}
       </div>
     </div>
     );
