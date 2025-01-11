@@ -11,6 +11,7 @@ import AuthProvider from '../provider/AuthProvider';
 import SpotDetails from '../pages/SpotDetails';
 import NotFound from '../pages/NotFound';
 import UpdateTouristsSpot from '../pages/UpdateTouristsSpot';
+import PrivateRoute from './PrivateRoute';
 
 const Routers = () => {
     const routes = createBrowserRouter([
@@ -20,12 +21,12 @@ const Routers = () => {
             children:[
                 {
                     path: "/",
-                    element:<Home></Home>,
+                    element:<Home></Home> ,
                     loader: ()=> fetch("http://localhost:5000/allspot")
                 },
                 {
                     path: "/addspot",
-                    element:<AddTouristSpot></AddTouristSpot>
+                    element:<PrivateRoute><AddTouristSpot></AddTouristSpot></PrivateRoute>
                 },
                 {
                     path: "/allspot",
@@ -39,12 +40,12 @@ const Routers = () => {
                 },
                 {
                     path: "/updatespot/:id",
-                    element:<UpdateTouristsSpot></UpdateTouristsSpot>,
+                    element:<PrivateRoute><UpdateTouristsSpot></UpdateTouristsSpot></PrivateRoute>,
                     loader: ({ params }) => fetch(`http://localhost:5000/spot/${params.id}`)
                 },
                 {
                     path: "/mylist",
-                    element:<MyList></MyList>,
+                    element:<PrivateRoute><MyList></MyList></PrivateRoute>,
                     loader: ()=> fetch("http://localhost:5000/myspot")
                 },
                 {

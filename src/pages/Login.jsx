@@ -1,12 +1,24 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { AuthContext } from "../provider/AuthProvider";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useLocation, useNavigate } from 'react-router-dom';
 const Login = () => {
 
 
-    const {user, loginUser} = useContext(AuthContext)
+    const {user,loading, loginUser} = useContext(AuthContext)
+    
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    if (loading) {
+        return <div>Loading...</div>; // Show a loading screen while checking authentication status
+      }
+    
+      if (user) {
+        return <Navigate to="/" replace />; // Redirect to home if already logged in
+      }
 
 
     const handleSignIn = (e)=>{
@@ -19,6 +31,9 @@ const Login = () => {
         loginUser(email, password)
          .then(res => { if(res.user.providerId){
                  toast.success("Login Successful");
+                 const redirectTo = location.state?.from || '/'; // Default to home if no redirect state
+                 navigate(redirectTo);
+                 
          } })
          .catch((error) => {
              toast.error("Login Failed: " + error.message);

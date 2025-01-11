@@ -2,13 +2,14 @@ import React, { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 const Register = () => {
 
     const {user, createUser} = useContext(AuthContext)
     
+    const navigate = useNavigate();
 
 
     const handleSignUp = (e) => {
@@ -33,6 +34,7 @@ const Register = () => {
               .then((data) => {
                 if (data.acknowledged) {
                   toast.success("Registration Successful");
+                  navigate('/')
                 }  
               });
           })

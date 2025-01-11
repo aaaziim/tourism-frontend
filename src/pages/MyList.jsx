@@ -10,7 +10,6 @@ const MyList = () => {
 
     const mySpots = spots.filter(spot=> spot.user_email == user.email)
 
-    console.log(mySpots)
     return (
         <div>
               <div class="text-center my-10">

@@ -3,8 +3,7 @@ import SpotCrad from '../components/SpotCrad';
 import { useLoaderData } from 'react-router-dom';
 
 const AllTouristsSpot = () => {
-    const spots = useLoaderData()
-    console.log(spots.length)
+    const spots = useLoaderData() 
     return (
         <div>
             <div class="text-center my-10">
