@@ -16,10 +16,7 @@ const Login = () => {
         return <div>Loading...</div>; // Show a loading screen while checking authentication status
       }
     
-      if (user) {
-        return <Navigate to="/" replace />; // Redirect to home if already logged in
-      }
-
+     
 
     const handleSignIn = (e)=>{
         e.preventDefault();

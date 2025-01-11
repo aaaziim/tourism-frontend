@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { AuthContext } from '../provider/AuthProvider';
 const UpdateTouristsSpot = () => {
 
+    const {user} = useContext(AuthContext)
 
      const spot = useLoaderData();
         const {
@@ -21,6 +23,9 @@ const UpdateTouristsSpot = () => {
             user_name
         } = spot;
 
+        if(user.email !== user_email){
+            return <p className="text-3xl">Acess Denied</p>
+        }
 
     const handleSpotUpdate = (e) =>{
         e.preventDefault();
@@ -39,7 +44,7 @@ const UpdateTouristsSpot = () => {
         const user_name = form.user_name.value;
     
 
-         fetch(`http://localhost:5000/spot/${_id}`, {
+         fetch(`https://tourism-backend-ozjum39k1-aaaziims-projects.vercel.app/spot/${_id}`, {
                       method: "PUT",
                       headers: {
                         "content-type": "application/json",

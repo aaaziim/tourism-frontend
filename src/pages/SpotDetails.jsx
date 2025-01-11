@@ -9,6 +9,13 @@ const SpotDetails = () => {
     const navigate = useNavigate(); 
 
     const spot = useLoaderData();
+
+
+
+
+
+
+    
     const {
         _id,
         tourists_spot_name,
@@ -39,7 +46,7 @@ const SpotDetails = () => {
   }).then((result) => {
     if (result.isConfirmed) {
       // Call the delete API
-      fetch(`http://localhost:5000/delete/${id}`, {
+      fetch(`https://tourism-backend-ozjum39k1-aaaziims-projects.vercel.app/delete/${id}`, {
         method: 'DELETE',
       })
         .then((res) => res.json())

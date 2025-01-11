@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Banner from '../components/Banner';
 import SpotCrad from '../components/SpotCrad';
 import { useLoaderData } from 'react-router-dom';
 
 const Home = () => {
-    const spots = useLoaderData() 
+
+    const [spots, setSpots] = useState([])
+
+    fetch("https://tourism-backend-ozjum39k1-aaaziims-projects.vercel.app/allspot")
+    .then(res => res.json())
+    .then(data => setSpots(data))
     return (
         <div>
            <Banner></Banner>

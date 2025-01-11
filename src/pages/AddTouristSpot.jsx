@@ -20,7 +20,7 @@ const AddTouristSpot = () => {
         const user_name = form.user_name.value;
     
       
-        fetch("http://localhost:5000/addspot", {
+        fetch("https://tourism-backend-ozjum39k1-aaaziims-projects.vercel.app/addspot", {
             method: "POST",
             headers: {
               "content-type": "application/json",

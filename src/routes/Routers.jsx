@@ -22,7 +22,7 @@ const Routers = () => {
                 {
                     path: "/",
                     element:<Home></Home> ,
-                    loader: ()=> fetch("http://localhost:5000/allspot")
+                    // loader: ()=> fetch("https://tourism-backend-ozjum39k1-aaaziims-projects.vercel.app/allspot")
                 },
                 {
                     path: "/addspot",
@@ -31,22 +31,22 @@ const Routers = () => {
                 {
                     path: "/allspot",
                     element:<AllTouristsSpot></AllTouristsSpot>,
-                    loader: ()=> fetch("http://localhost:5000/allspot")
+                    // loader: ()=> fetch("https://tourism-backend-ozjum39k1-aaaziims-projects.vercel.app/allspot")
                 },
                 {
                     path: "/spot/:id",
                     element: <SpotDetails></SpotDetails>,
-                    loader: ({ params }) => fetch(`http://localhost:5000/spot/${params.id}`)
+                    loader: ({ params }) => fetch(`https://tourism-backend-ozjum39k1-aaaziims-projects.vercel.app/spot/${params.id}`)
                 },
                 {
                     path: "/updatespot/:id",
                     element:<PrivateRoute><UpdateTouristsSpot></UpdateTouristsSpot></PrivateRoute>,
-                    loader: ({ params }) => fetch(`http://localhost:5000/spot/${params.id}`)
+                    loader: ({ params }) => fetch(`https://tourism-backend-ozjum39k1-aaaziims-projects.vercel.app/spot/${params.id}`)
                 },
                 {
                     path: "/mylist",
                     element:<PrivateRoute><MyList></MyList></PrivateRoute>,
-                    loader: ()=> fetch("http://localhost:5000/myspot")
+                    loader: ()=> fetch("https://tourism-backend-ozjum39k1-aaaziims-projects.vercel.app/myspot")
                 },
                 {
                     path: "/login",

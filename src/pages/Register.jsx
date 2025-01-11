@@ -23,7 +23,7 @@ const Register = () => {
         createUser(email, password)
           .then(() => {
             // Save user to database
-            fetch("http://localhost:5000/addusers", {
+            fetch("https://tourism-backend-ozjum39k1-aaaziims-projects.vercel.app/addusers", {
               method: "POST",
               headers: {
                 "content-type": "application/json",

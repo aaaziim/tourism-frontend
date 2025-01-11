@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import SpotCrad from '../components/SpotCrad';
 import { useLoaderData } from 'react-router-dom';
 
 const AllTouristsSpot = () => {
-    const spots = useLoaderData() 
+    const [spots, setSpots] = useState([])
+    
+        fetch("https://tourism-backend-ozjum39k1-aaaziims-projects.vercel.app/allspot")
+        .then(res => res.json())
+        .then(data => setSpots(data))
     return (
         <div>
             <div class="text-center my-10">
